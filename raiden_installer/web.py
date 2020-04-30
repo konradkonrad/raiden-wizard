@@ -3,7 +3,6 @@ import os
 import sys
 import time
 import webbrowser
-from collections import namedtuple
 from glob import glob
 from pathlib import Path
 from urllib.parse import urlparse
@@ -536,11 +535,7 @@ class ConfigurationItemAPIHandler(APIHandler):
 
         def serialize_balance(balance_amount):
             return (
-                {
-                    "as_wei": balance_amount.as_wei,
-                    "formatted": balance_amount.formatted,
-                    "as_fiat": balance_amount.as_fiat,
-                }
+                {"as_wei": balance_amount.as_wei, "formatted": balance_amount.formatted}
                 if balance_amount
                 else None
             )
