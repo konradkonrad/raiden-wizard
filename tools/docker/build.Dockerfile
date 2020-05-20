@@ -1,10 +1,14 @@
-FROM python:3.7-stretch
+FROM ubuntu:16.04 
 
 # install dependencies
 RUN apt-get update
-RUN apt-get install -y git-core wget xz-utils build-essential automake pkg-config libtool libffi-dev python3-dev libgmp-dev
+RUN apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa
 
-RUN python3 -m venv /venv
+RUN apt-get update && apt-get install -y python3.7
+
+RUN apt-get install -y git-core wget xz-utils build-essential automake pkg-config libtool libffi-dev python3.7-dev libgmp-dev python3.7-venv
+
+RUN python3.7 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 
